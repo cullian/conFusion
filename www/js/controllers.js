@@ -408,7 +408,7 @@ angular.module('conFusion.controllers', [])
 
 
 }])
-
+//    Favorite Filter
 .filter('favoriteFilter', function () {
     return function (dishes, favorites) {
         var out = [];
