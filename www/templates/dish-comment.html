@@ -1,0 +1,35 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Submit Comment on Dish</h1>
+    <div class="buttons">
+      <button side="secondary" class="button button-clear" ng-click="closeComment()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form id="commentForm" name="commentForm" novalidate="" ng-submit="submitComment()">
+      <div class="list">
+<!--          should these labels be <ion-item>'s?? oh well it works anyway and is the way ionic scaffolded the login-->
+        <label class="item item-input item-select"> 
+          <span class="input-label">Rating</span>
+            <select ng-model="myComment.rating">
+                <option ng-repeat="n in [1,2,3,4,5]" value="{{n}}">{{n}}</option>
+            </select>
+        </label>
+        <div ng-class="{ 'has-error' : commentForm.author.$error.required && !commentForm.author.$pristine }">
+        <label for="author" class="item item-input">
+          <span class="input-label">Your Name</span>
+          <input  id="author" name="author" type="text" ng-model="myComment.author" required />
+        <span ng-show="commentForm.author.$error.required && !commentForm.author.$pristine" class="pull-left">Your Name is required.</span>
+        </label>
+        </div>
+        <label class="item item-input">
+            <span class="input-label">Your Comment</span>
+            <textarea ng-model="myComment.comment"></textarea>     
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Submit</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>
